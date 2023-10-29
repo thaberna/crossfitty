@@ -1,5 +1,5 @@
 const URL_API =
-  "https://raw.githubusercontent.com/dimitrisraptis96/woddd/master/src/constants/wods.json";
+  "https://raw.githubusercontent.com/thaberna/crossfity/main/src/constants/benchmarks.json";
 
 const getWorkouts = async (id) => {
   const response = await fetch(URL_API);
