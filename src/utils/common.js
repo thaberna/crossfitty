@@ -10,9 +10,9 @@ const imageType = (exercises = []) => {
 
   const imageSource = images
     .filter((image) =>
-      exercises.some((exercise) => {
-        exercise.toLowerCase().includes(image.keyword);
-      })
+      exercises.some((exercise) =>
+        exercise.toLowerCase().includes(image.keyword)
+      )
     )
     .map((matchingImage) => matchingImage.src)[0];
 

@@ -7,15 +7,19 @@ import useSearch from "@/hooks/useSearch";
 export default function SearchBar() {
   const [search, setSearch] = useState("");
   const { wods, setWods, getDataSearch } = useSearch({ search });
+  const [showResults, setShowResults] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     refreshSearch();
     getDataSearch();
+
+    if (wods.length > 0) showResults(true);
   };
 
   const refreshSearch = () => {
     setSearch("");
+    setShowResults(false);
     setWods([]);
   };
 
@@ -52,7 +56,7 @@ export default function SearchBar() {
         </div>
       </form>
       {wods.length > 0 ? (
-        <div className="relative w-full md:max-w-lg px-4 mt-2 rounded-lg overflow-auto h-48 bg-[#11162A]">
+        <div className="relative w-full md:max-w-lg p-4 mt-2 rounded-lg overflow-auto h-48 bg-[#11162A]">
           {wods.map((wod) => (
             <Link
               key={wod.id}
@@ -66,7 +70,11 @@ export default function SearchBar() {
           ))}
         </div>
       ) : (
-        <div className="relative w-full md:max-w-lg p-4 mt-2 overflow-auto rounded-lg bg-[#11162A]">
+        <div
+          className={`${
+            !showResults ? "invisible" : "visible"
+          } relative w-full md:max-w-lg p-4 mt-2 overflow-auto rounded-lg bg-[#11162A]`}
+        >
           <span className="px-4 py-2 text-[#C0C8D4]">Sin resultados</span>
         </div>
       )}
