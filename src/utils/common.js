@@ -8,6 +8,8 @@ const imageType = (exercises = []) => {
     { keyword: "run", src: require("../assets/run.jpg") },
   ];
 
+  const imageDefault = require("../assets/default.jpg");
+
   const imageSource = images
     .filter((image) =>
       exercises.some((exercise) =>
@@ -15,6 +17,10 @@ const imageType = (exercises = []) => {
       )
     )
     .map((matchingImage) => matchingImage.src)[0];
+
+  if (imageSource === undefined) {
+    return imageDefault;
+  }
 
   return imageSource;
 };
