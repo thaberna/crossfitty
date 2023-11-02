@@ -10,6 +10,8 @@ export default function useSearch({ search }) {
     const filteredWods = await searchWorkouts(search);
     if (filteredWods.length > 0) {
       setWods(filteredWods);
+    } else {
+      alert("No hay resultados con esta búsqueda");
     }
   };
 
