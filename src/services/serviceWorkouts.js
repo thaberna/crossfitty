@@ -5,8 +5,6 @@ const getWorkouts = async (id) => {
   const response = await fetch(URL_API);
   const workouts = await response.json();
 
-  console.log(id);
-
   if (id) return workouts.wods.find((wod) => wod.id === id);
   return workouts.wods;
 };
